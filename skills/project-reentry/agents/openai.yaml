@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Re-entry"
+  short_description: "Create evidence-backed project return briefs"
+  default_prompt: "Use $project-reentry to create an evidence-backed brief for this local repository."

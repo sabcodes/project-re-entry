@@ -1,6 +1,12 @@
 # Project Re-entry
 
-A local-first workspace for quickly understanding an interrupted software project and taking the next useful action.
+A local-first workspace that helps a developer re-enter an interrupted software project and confidently take the next useful action.
+
+## Product goal
+
+The goal is not project management or automated coding. It is reducing the cognitive cost of returning after days or weeks away: reconstruct the goal, recent progress, decisions, unfinished work, blockers, and a credible next step from inspectable evidence.
+
+The web UI is the human-friendly surface for that workflow. The included Codex skill is a second surface: it lets an agent produce the same evidence-backed re-entry brief in a conversation or task.
 
 ## Current increment
 
@@ -32,6 +38,12 @@ npm run dev
 ```
 
 Then open the URL Vite prints (normally `http://localhost:5173`).
+
+## Use with Codex
+
+The reusable skill lives in [`skills/project-reentry`](skills/project-reentry). On this computer it is installed as `~/.codex/skills/project-reentry`, so newly started local Codex agents can invoke it as `$project-reentry`.
+
+For another Codex installation, symlink or copy that folder into its skills directory. The skill uses a read-only collector for Git metadata, working-tree status, selected Markdown/text notes, and its evidence-linked six-section brief.
 
 ## Verify
 
