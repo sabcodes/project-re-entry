@@ -4,7 +4,7 @@ A local-first workspace for quickly understanding an interrupted software projec
 
 ## Current increment
 
-This initial product shell implements the primary reading experience:
+This initial evidence-backed prototype implements:
 
 - a short, six-part re-entry brief
 - clear distinction between evidence-backed claims and suggestions
@@ -12,14 +12,22 @@ This initial product shell implements the primary reading experience:
 - source coverage and uncertainty messaging
 - local project onboarding UI with optional notes and exclusions
 - editable session checkpoint flow
+- a local Node evidence service backed by SQLite
+- Git history, current working-tree status, selected Markdown/text notes, and saved checkpoints
 - responsive, no-account interface
 
-The included brief is deliberately sample data. It is a useful interaction and visual baseline, but it does **not** yet read a local repository, persist project state, or call a model provider. The UI makes that limitation explicit rather than presenting mock evidence as real project analysis.
+The included brief is sample data until a project is added. Once added, the service reads the selected local Git repository and notes path on demand; application state is stored separately at `~/Library/Application Support/Project Re-entry/state.sqlite` (or `REENTRY_DATA_DIR`). It does not modify the source repository.
 
 ## Run locally
 
 ```bash
 npm install
+npm run service
+```
+
+In a second terminal:
+
+```bash
 npm run dev
 ```
 
@@ -34,10 +42,10 @@ npm run lint
 
 ## Delivery plan
 
-1. Add a local evidence service: safe Git metadata, diffs, selected Markdown/text notes, ignored-path and secret/binary exclusions.
-2. Persist projects, sources, corrections, checkpoints, and snapshot revisions in per-project SQLite state outside the repository.
-3. Generate the six-section brief from structured evidence, with deterministic provenance and a configurable model adapter.
-4. Add refresh, correction/supersession controls, partial-failure handling, and Markdown export.
+1. Extend indexing to relevant diffs/current files and fully apply Git-ignore rules alongside the existing sensitive-name and binary exclusions.
+2. Persist extracted source snapshots, feedback/corrections, and revisions per project in SQLite.
+3. Add a configurable model adapter on top of the deterministic evidence baseline.
+4. Add correction/supersession controls and partial-refresh recovery.
 5. Create a snapshotted evaluation set before integrating SkillOpt for instruction optimization.
 
 ## Product boundaries
